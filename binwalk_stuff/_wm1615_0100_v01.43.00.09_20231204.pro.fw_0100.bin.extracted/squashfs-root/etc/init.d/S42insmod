@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo 'S42insmod is running'
+
+insmod /lib/modules/dji_imc.ko
+
+#install ambacv module
+#modprobe ambacv
+
+#modprobe ambarella_udc
+
+echo 'S42insmod is done'
