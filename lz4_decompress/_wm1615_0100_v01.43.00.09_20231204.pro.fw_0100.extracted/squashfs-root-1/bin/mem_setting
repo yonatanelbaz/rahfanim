@@ -1,0 +1,59 @@
+#! /bin/sh
+
+echo 'S61memset is running...'
+
+while true
+do
+echo 0 > /proc/sys/vm/swappiness
+echo 308 > /proc/sys/vm/min_free_kbytes
+min_free=`more /proc/sys/vm/min_free_kbytes`
+echo "min_free_kbytes is set to $min_free"
+
+proid=`pidof "adbd"`
+echo 1000 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "adbd: pid $proid; oom_score_adi set to $oom_score"
+
+#proid=`pidof "dji_v2_sdk"`
+#echo 1000 > /proc/$proid/oom_score_adj
+#oom_score=`more /proc/$proid/oom_score_adj`
+#echo "dji_v2_sdk: pid $proid; oom_score_adi set to $oom_score"
+
+#proid=`pidof "busybox"`
+#echo 1000 > /proc/$proid/oom_score_adj
+#oom_score=`more /proc/$proid/oom_score_adj`
+#echo "busybox: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "syslogd"`
+echo 1000 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "syslogd: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "hostapd"`
+echo 1000 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "hostapd: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "dji_navigation"`
+echo -1000 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "dji_navigation: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "dji_sw_uav"`
+echo -500 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "dji_sw_uav: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "dji_hdvt_uav"`
+echo -500 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "dji_hdvt_uav: pid $proid; oom_score_adi set to $oom_score"
+
+proid=`pidof "dji_network"`
+echo -500 > /proc/$proid/oom_score_adj
+oom_score=`more /proc/$proid/oom_score_adj`
+echo "dji_network: pid $proid; oom_score_adi set to $oom_score"
+
+sleep 20
+
+done

@@ -1,0 +1,8 @@
+#!/bin/sh
+#This script is used to sync the RTC.
+
+echo 'S30sync_rtc is running'
+
+#date -s 1970-01-02
+
+echo 'S30sync_rtc is done'
