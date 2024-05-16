@@ -1,0 +1,21 @@
+#!/bin/sh
+
+echo 'S99bootdone is running...'
+
+export LD_LIBRARY_PATH=/glibc
+#send boot_done to RTOS
+if [ -x /usr/bin/rpc_ctrl_cln ]; then
+	echo 'rpc_ctrl_cln start'
+        /usr/bin/rpc_ctrl_cln 1 >> /tmp/blackbox/log/system/syslog.log 2>&1
+	echo 'rpc_ctrl_cln finish'
+fi
+export LD_LIBRARY_PATH=
+kill -9 `pidof ipcbind`
+kill -9 `pidof util_svc`
+
+echo 'S99bootdone' > /sys/module/rpmsg_echo/parameters/example_printk
+dmesg >> /tmp/blackbox/log/system/syslog.log 2>&1
+
+touch /tmp/boot_done
+
+exit $?

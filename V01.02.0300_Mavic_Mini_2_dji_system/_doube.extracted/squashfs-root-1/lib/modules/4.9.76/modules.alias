@@ -1,0 +1,4 @@
+# Aliases extracted from modules themselves.
+alias platform:ambarella-usbgadget ambarella_udc
+alias of:N*T*Cambarella,udcC* ambarella_udc
+alias of:N*T*Cambarella,udc ambarella_udc

@@ -1,0 +1,56 @@
+# /etc/inittab
+#
+# Copyright (C) 2001 Erik Andersen <andersen@codepoet.org>
+#
+# Note: BusyBox init doesn't support runlevels.  The runlevels field is
+# completely ignored by BusyBox init. If you want runlevels, use
+# sysvinit.
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# id        == tty to run on, or empty for /dev/console
+# runlevels == ignored
+# action    == one of sysinit, respawn, askfirst, wait, and once
+# process   == program to run
+
+# Startup the system
+null::sysinit:/bin/mount -t proc proc /proc
+null::sysinit:/bin/mkdir -p /dev/pts
+null::sysinit:/bin/mkdir -p /dev/shm
+null::sysinit:/bin/mount -a
+null::sysinit:/bin/hostname -F /etc/hostname
+null::sysinit:/etc/init.d/mount_first
+# now run any rc scripts
+null::sysinit:/etc/init.d/rcS
+
+# null::respawn:/usr/bin/log.sh
+null::respawn:/usr/bin/dji_sys
+null::respawn:/usr/bin/dji_sw_uav
+null::respawn:/usr/bin/dji_hdvt_uav -x
+null::respawn:/usr/bin/dji_network
+null::respawn:/usr/bin/dji_blackbox
+null::respawn:/usr/bin/dji_flight
+null::respawn:/usr/bin/dji_app_agent
+null::respawn:/usr/bin/launch_v2sdk.sh
+null::respawn:/usr/bin/sdrs_agent
+null::respawn:/usr/bin/usb_conn_svr
+null::respawn:/usr/bin/dji_navigation
+
+# Put a getty on the serial port
+#ttyLinux0::respawn:-/bin/sh
+# ::respawn:-/bin/sh
+
+# ttyUSB0 on usb host.
+# ttyUSB0::respawn:-/sbin/getty  115200 ttyUSB0
+
+# ttyGS0 on usb device
+# ttyGS0::respawn:-/bin/sh
+
+# Stuff to do for the 3-finger salute
+::ctrlaltdel:/sbin/reboot
+
+# Stuff to do before rebooting
+null::shutdown:/etc/init.d/rcK
+null::shutdown:/bin/umount -a -r
+null::shutdown:/sbin/swapoff -a
+

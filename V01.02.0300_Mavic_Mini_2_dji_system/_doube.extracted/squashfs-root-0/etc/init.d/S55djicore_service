@@ -1,0 +1,31 @@
+#!/bin/sh
+
+echo 'S55djicore_service is running'
+
+echo 0 1 0 7 > /proc/sys/kernel/printk
+
+# open coredump
+echo "/tmp/blackbox/log/system/core-%e-%p-%t" > /proc/sys/kernel/core_pattern
+
+syslogd -S -O /tmp/blackbox/log/system/syslog.log -s 128
+
+if [ -x /usr/bin/cmd_rlv_transfer ];then
+	/usr/bin/cmd_rlv_transfer &
+fi
+
+echo "1duml_host" > /tmp/ipc_fifo
+while [ -f /tmp/ipc_fifo ]
+do
+	echo 'wait for ipc_fifo'
+	sleep 0.3
+done
+
+if [ -x /usr/bin/dji_nail ];then
+	/usr/bin/dji_nail &
+fi
+
+#if [ -x /usr/bin/blackbox_monitor.sh ];then
+#	/usr/bin/blackbox_monitor.sh &
+#fi
+
+echo 'S55djicore_service is done'

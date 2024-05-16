@@ -1,0 +1,969 @@
+{
+    "log": {
+        "default_level": "error",
+        "default_channel": "syslog",
+        "default_mask": "enable_all",
+        "default_format": [
+            "basic"
+        ],
+        "default_module": [
+            "unknow",
+            "osal",
+            "mb",
+            "tm",
+            "event",
+            "sketch",
+            "hal",
+            "wl"
+        ]
+    },
+    "blackbox": {
+      "active"            : 0,
+      "base_dir"          : "/tmp/blackbox",
+      "prefix"            : "",
+      "demuxed"           : 0,
+      "file_num_limit"    : 10,
+      "file_max_size_m"   : 1,
+      "space_limit_m"     : 1,
+      "cache_size_m"      : 0,
+      "output_port"       : 8919,
+
+      "channels": [
+          {"name": "flyctrl",         "active": 1, "id": 0, "checksum": "no", "high_priority": 0, "sync": 0, "dma": 0, "shm": 0, "prefix": "FLY", "file_num_limit" : 100, "file_max_size_m" : 30, "space_limit_m" : 85,  "self_inc_index" : 0},
+          {"name": "gimbal",          "active": 1, "id": 1, "checksum": "no", "high_priority": 0, "sync": 0, "dma": 0, "shm": 0, "prefix": "GIMBAL", "file_num_limit" : 100, "file_max_size_m" : 30, "space_limit_m" : 85,  "self_inc_index" : 0}
+      ]
+    },
+    "platform": {
+        "name": "common",
+        "dev_info": "WM161",
+        "hw_str": "WM161 AC",
+        "system_init": "sys_platform_common_init"
+    },
+    "hal": {
+        "device_list": [
+            {"name": "/dev/ttyGS0",     "attach": "duss_hal_attach_linux_tty",    "detach": "duss_hal_detach_linux_tty"   },
+            {"name": "/dev/ttyS1",      "attach": "duss_hal_attach_linux_tty",    "detach": "duss_hal_detach_linux_tty"   },
+            {"name": "/dev/ttyS2",      "attach": "duss_hal_attach_linux_tty",    "detach": "duss_hal_detach_linux_tty"   },
+            {"name": "/dev/ttyACM0",    "attach": "duss_hal_attach_linux_tty",    "detach": "duss_hal_detach_linux_tty"   },
+            {"name": "/dev/ttyACM1",      "attach": "duss_hal_attach_linux_tty",    "detach": "duss_hal_detach_linux_tty"   },
+            {"name": "/sys/class/gpio", "attach": "duss_hal_attach_linux_gpio",   "detach": "duss_hal_detach_linux_gpio"  }
+        ]
+    },
+    "process": {
+        "dji_sys": {
+            "log": {
+                "default_level": "fatal",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_flight": {
+            "log": {
+                "default_level": "error",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_navigation": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_visual": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "usb_conn_svr": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+
+        "dji_mb_ctrl": {
+            "log": {
+                "default_level": "info",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_network": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_sw_uav": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_hdvt_uav": {
+            "log": {
+                "default_level": "warning",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            }
+        },
+        "dji_amt": {
+            "log": {
+                "default_level": "fatal",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            },
+            "config": {
+                "pro_state_use": 1,
+                "onetime_state_use": 0
+            }
+        },
+        "dji_blackbox": {
+            "log": {
+                "default_level": "fatal",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            },
+            "blackbox": {
+                "active"            : 1,
+                "base_dir"          : "/tmp/blackbox",
+                "prefix"            : "FLY",
+                "demuxed"           : 1,
+                "file_num_limit"    : 100,
+                "file_max_size_m"   : 30,
+                "space_limit_m"     : 85,
+                "cache_size_m"      : 1,
+                "output_port"       : 8914
+            }
+        },
+        "dji_sdrs_agent":{
+            "log":{
+                "default_level": "info",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            },
+            "blackbox": {
+                "active"            : 0,
+                "base_dir"          : "/tmp/blackbox/dji_sdrs_agent",
+                "prefix"            : "",
+                "demuxed"           : 0,
+                "file_num_limit"    : 100,
+                "file_max_size_m"   : 1,
+                "space_limit_m"     : 4,
+                "cache_size_m"      : 1,
+                "output_port"       : 8923
+            }
+        },
+        "dji_app_agent": {
+            "log": {
+                "default_level": "info",
+                "default_channel": "syslog",
+                "default_mask": "enable_all",
+                "default_format": [
+                    "basic"
+                ]
+            },
+            "blackbox": {
+                "active"            : 3,
+                "base_dir"          : "/tmp/blackbox/dji_app_agent",
+                "prefix"            : "",
+                "demuxed"           : 1,
+                "file_num_limit"    : 100,
+                "file_max_size_m"   : 2,
+                "space_limit_m"     : 16,
+                "cache_size_m"      : 1,
+                "output_port"       : 8922
+            }
+        }
+    },
+    "system_service": {
+        "mb_route_table": {
+            "system": {
+                "host": "ve_air", "index": 1,
+                "00": {"status": 1, "target": "whoami",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "whoami", "index": 0}},
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "netlink", "distance": 0, "protocol": "v1",
+                      "netlink": {"host_pid": 41225, "groups": 0, "target_pid": 20480}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "21": {"status": 0, "target": "mobile",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "22": {"status": 0, "target": "mobile",  "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "27": {"status": 1, "target": "mobile",  "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "35": {"status": 1, "target": "flight", "index": 5, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "41": {"status": 1, "target": "gimbal",  "index": 1, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "42": {"status": 1, "target": "gimbal",  "index": 2, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "43": {"status": 1, "target": "gimbal",  "index": 3, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "70": {"status": 1, "target": "network",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 0}},
+                "71": {"status": 1, "target": "network",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                        "local": {"direct_host": "network", "index": 1}},
+                "82": {"status": 1, "target": "ve_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 2}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "92": {"status": 1, "target": "vt_air",   "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "94": {"status": 1, "target": "vt_air",   "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "95": {"status": 1, "target": "vt_air",   "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 5}},
+                "97": {"status": 1, "target": "vt_air",   "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 7}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "uart",  "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyGS0", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8},
+                      "filter": [
+                      {"source": "pc", "source_index": 1, "target": "camera", "target_index": 0, "msg_id": 9, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "battery", "target_index": 0, "msg_id": 7, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "flight", "target_index": 6, "msg_id": 7, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "esc", "target_index": 0, "msg_id": 7, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "esc", "target_index": 1, "msg_id": 7, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "esc", "target_index": 2, "msg_id": 7, "attrib": -1},
+                      {"source": "pc", "source_index": 1, "target": "esc", "target_index": 3, "msg_id": 7, "attrib": -1}
+                      ]},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "uart",  "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyGS0", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "a4": {"status": 1, "target": "pc",  "index": 4, "channel": "uart",  "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyGS0", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "b0": {"status": 1, "target": "battery", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "c0": {"status": 1, "target": "esc",  "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "c1": {"status": 1, "target": "esc",  "index": 1, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "c2": {"status": 1, "target": "esc",  "index": 2, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "c3": {"status": 1, "target": "esc",  "index": 3, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "e0": {"status": 1, "target": "vt_gnd",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "111": {"status": 1, "target": "mvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "121": {"status": 1, "target": "bvision", "index": 1, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "122": {"status": 1, "target": "bvision", "index": 2, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "123": {"status": 1, "target": "bvision", "index": 3, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "124": {"status": 1, "target": "bvision", "index": 4, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "125": {"status": 1, "target": "bvision", "index": 5, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyS2", "baudrate": 750000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "1d0": {"status": 1, "target": "blackbox", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                        "local": {"direct_host": "blackbox", "index": 0}},
+                "1e0": {"status": 1, "target": "test", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "test", "index": 0}},
+                "1f0": {"status": 1, "target": "all",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "all", "index": 0}}
+            },
+            "whoami": {
+                "host": "whoami", "index": 0,
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}}
+            },
+            "all": {
+                "host": "all", "index": 0,
+                "20": {"status": 1, "target": "mobile", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}}
+             }
+        },
+        "configuration": {
+            "sub_devices": {
+            }
+        }
+    },
+    "blackbox_service": {
+      "mb_route_table": {
+          "blackbox_local": {
+              "host": "blackbox", "index": 0,
+              "27": {"status": 1, "target": "mobile", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+              "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+              "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+              "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}}
+          }
+      },
+      "configuration": {
+          "sdr_log": {
+              "status": 0
+           }
+       }
+    },
+    "network_service": {
+        "mb_route_table": {
+            "wms_local": {
+                "host": "network", "index": 0,
+                "00": {"status": 1, "target": "whoami",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "whoami", "index": 0}},
+                "10": {"status": 1, "target": "camera",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "71": {"status": 1, "target": "network",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 1}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1b0": {"status": 1, "target": "wifi_gnd",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "41": {"status": 1, "target": "gimbal",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "42": {"status": 1, "target": "gimbal",  "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "60": {"status": 1, "target": "rc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "82": {"status": 1, "target": "ve_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 2}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "84": {"status": 1, "target": "ve_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 4}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "92": {"status": 1, "target": "vt_air",   "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "94": {"status": 1, "target": "vt_air",   "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "97": {"status": 1, "target": "vt_air",   "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 7}},
+                "c0": {"status": 1, "target": "esc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c1": {"status": 1, "target": "esc",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c2": {"status": 1, "target": "esc",  "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c3": {"status": 1, "target": "esc",  "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "ve_air", "index": 1}},
+                "111": {"status": 1, "target": "mvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "121": {"status": 1, "target": "bvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "122": {"status": 1, "target": "bvision", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "123": {"status": 1, "target": "bvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "124": {"status": 1, "target": "bvision", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "125": {"status": 1, "target": "bvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1f0": {"status": 1, "target": "all",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "all", "index": 0}}
+            },
+            "sw_monitor": {
+                "host": "network", "index": 1,
+                "70": {"status": 1, "target": "network", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 0}},
+                "94": {"status": 1, "target": "vt_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}}
+            }
+        }
+    },
+    "vtair_service": {
+        "mb_route_table": {
+            "vtair": {
+                "host": "vt_air", "index": 2,
+                "10": {"status": 1, "target": "camera",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "17": {"status": 1, "target": "camera", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "camera", "index": 7}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "wl", "distance": 0, "protocol": "v1",
+                      "wl": {"interface": "iwlan0", "local_port": 9003, "remote_address": "0.0.0.0", "remote_port": 0, "server": true,
+                      "protocol": "sw_v2_proto", "priority": "HIGHEST", "flags": 1}},
+                "27": {"status": 1, "target": "mobile",  "index": 7, "channel": "wl", "distance": 0, "protocol": "v1",
+                      "wl": {"interface": "iwlan0", "local_port": 9003, "remote_address": "0.0.0.0", "remote_port": 0, "server": true,
+                      "protocol": "sw_v2_proto", "priority": "HIGHEST", "flags": 1}},
+                "1b0": {"status": 1, "target": "wifi_gnd",  "index": 0, "channel": "wl", "distance": 0, "protocol": "v1",
+                      "wl": {"interface": "iwlan0", "local_port": 9003, "remote_address": "0.0.0.0", "remote_port": 0, "server": true,
+                      "protocol": "sw_v2_proto", "priority": "HIGHEST", "flags": 1}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+                "35": {"status": 1, "target": "flight", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                    "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "41": {"status": 1, "target": "gimbal",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "42": {"status": 1, "target": "gimbal",  "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "43": {"status": 1, "target": "gimbal",  "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "60": {"status": 1, "target": "rc",  "index": 0, "channel": "wl", "distance": 0, "protocol": "v1",
+                      "wl": {"interface": "iwlan0", "local_port": 9003, "remote_address": "0.0.0.0", "remote_port": 0, "server": true,
+                      "protocol": "sw_v2_proto", "priority": "HIGHEST", "flags": 1}},
+                "70": {"status": 1, "target": "network",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 0}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "82": {"status": 1, "target": "ve_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 2}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "84": {"status": 1, "target": "ve_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 4}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "94": {"status": 1, "target": "vt_air",   "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "95": {"status": 1, "target": "vt_air",   "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 5}},
+                "97": {"status": 1, "target": "vt_air",   "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 7}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a4": {"status": 1, "target": "pc",  "index": 4, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "b0": {"status": 1, "target": "battery", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c0": {"status": 1, "target": "esc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c1": {"status": 1, "target": "esc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c2": {"status": 1, "target": "esc",  "index": 2, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c3": {"status": 1, "target": "esc",  "index": 3, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "111": {"status": 1, "target": "mvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "121": {"status": 1, "target": "bvision", "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "122": {"status": 1, "target": "bvision", "index": 2, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "123": {"status": 1, "target": "bvision", "index": 3, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "124": {"status": 1, "target": "bvision", "index": 4, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "125": {"status": 1, "target": "bvision", "index": 5, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1e0": {"status": 1, "target": "test", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "test", "index": 0}},
+                "1d0": {"status": 1, "target": "blackbox", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                        "local": {"direct_host": "blackbox", "index": 0}}
+            }
+        }
+    },
+    "amt_service": {
+        "mb_route_table": {
+            "AMT": {
+                "host": "ve_air", "index": 3,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "35": {"status": 1, "target": "flight", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}}
+            }
+        }
+    },
+    "autotest_service": {
+        "mb_route_table": {
+            "autotest": {
+                "host": "mvision", "index": 3,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "70": {"status": 1, "target": "network",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 0}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "90": {"status": 1, "target": "vt_air",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "94": {"status": 1, "target": "vt_air",  "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "b0": {"status": 1, "target": "battery",   "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1b0": {"status": 1, "target": "wifi_gnd",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 0}}
+            }
+        }
+    },
+    "flight_service": {
+        "mb_route_table": {
+            "flight_srv_fmu": {
+                "host": "mvision", "index": 5,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}}
+            },
+            "flight_nfz_upgrade": {
+                "host": "vt_air", "index": 5,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}}
+            }
+        }
+    },
+    "navigation_service": {
+        "mb_route_table": {
+            "navigation": {
+                "host": "mvision", "index": 7,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "20": {"status": 1, "target": "mobile",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air",   "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}}
+            }
+        }
+    },
+    "ml_service": {
+        "mb_route_table": {
+            "ml_visual": {
+                "host": "mvision", "index": 6,
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                        "local": {"direct_host": "mvision", "index": 7}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}}
+            }
+        }
+    },
+    "test": {
+        "mb_route_table": {
+            "diag": {
+                "host": "ve_air", "index": 7,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "17": {"status": 1, "target": "camera", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "camera", "index": 7}},
+                "25": {"status": 1, "target": "mobile", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mobile", "index": 5}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "35": {"status": 1, "target": "flight", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "92": {"status": 1, "target": "vt_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "94": {"status": 1, "target": "vt_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local",  "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "121": {"status": 1, "target": "bvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "122": {"status": 1, "target": "bvision", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "123": {"status": 1, "target": "bvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "124": {"status": 1, "target": "bvision", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "125": {"status": 1, "target": "bvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1f0": {"status": 1, "target": "all",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "all", "index": 0}}
+            }
+        }
+    },
+    "app_agent_service": {
+        "mb_route_table": {
+            "app_agent_local": {
+                "host": "mobile", "index": 5,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "20": {"status": 0, "target": "mobile", "index": 0, "channel": "bulk", "distance": 0, "protocol": "hp",
+                      "bulk": {"dev": "/dev/usb-ffs/bulk", "host": 1, "special": 1, "ep_in": 130, "ep_out": 2, "vid": 11427, "pid": 4112, "interface": 1}},
+                "27": {"status": 0, "target": "mobile", "index": 7, "channel": "bulk", "distance": 0, "protocol": "hp",
+                     "bulk": {"dev": "/dev/usb-ffs/bulk", "host": 1, "special": 1, "ep_in": 130, "ep_out": 2, "vid": 11427, "pid": 4112, "interface": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "90": {"status": 1, "target": "vt_air", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "95": {"status": 1, "target": "vt_air", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "vt_air", "index": 5}},
+                "94": {"status": 1, "target": "vt_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "vt_air", "index": 4}}
+            }
+        },
+        "configuration": {
+            "sqlite_db": {"database_name": "/tmp/blackbox/burying.db", "table_name": "burying_table", "limit_item_num": 10},
+            "burying_forward": {"check_interval": 5, "forward_rate": 5, "forward_num_onetime": 10},
+            "burying_sender": {
+                "sender_num": 16,
+                "send_rate": 5,
+                "count_interval": 5,
+                "special_send_rate": [
+                    {"sender": 8, "index": 1, "rate": 10}
+                ]
+            }
+        }
+    },
+    "sdrs_agent_service": {
+        "mb_route_table": {
+            "sdrs_agent": {
+                "host": "vt_air", "index": 4,
+                "10": {"status": 1, "target": "camera", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "17": {"status": 1, "target": "camera", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "camera", "index": 7}},
+                "20": {"status": 0, "target": "mobile", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "27": {"status": 0, "target": "mobile", "index": 7, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "25": {"status": 1, "target": "mobile",  "index": 5, "channel": "local",  "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "mobile", "index": 5}},
+                "30": {"status": 1, "target": "flight", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "36": {"status": 1, "target": "flight", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "40": {"status": 1, "target": "gimbal",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "41": {"status": 1, "target": "gimbal",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "42": {"status": 1, "target": "gimbal",  "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "43": {"status": 1, "target": "gimbal",  "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "60": {"status": 0, "target": "rc", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "70": {"status": 1, "target": "network", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 0}},
+                "71": {"status": 1, "target": "network", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "network", "index": 1}},
+                "81": {"status": 1, "target": "ve_air", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "82": {"status": 1, "target": "ve_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 2}},
+                "83": {"status": 1, "target": "ve_air", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 3}},
+                "84": {"status": 1, "target": "ve_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 4}},
+                "85": {"status": 1, "target": "ve_air", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 5}},
+                "86": {"status": 1, "target": "ve_air", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 6}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}},
+                "88": {"status": 1, "target": "test", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "test", "index": 3}},
+                "90": {"status": 0, "target": "vt_air", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "92": {"status": 1, "target": "vt_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "vt_air", "index": 2}},
+                "95": {"status": 1, "target": "vt_air", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "vt_air", "index": 5}},
+                "a0": {"status": 1, "target": "pc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "ve_air", "index": 1}},
+                "a1": {"status": 1, "target": "pc",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                     "local": {"direct_host": "ve_air", "index": 1}},
+                "a5": {"status": 0, "target": "pc",  "index": 5, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "b0": {"status": 1, "target": "battery",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c0": {"status": 1, "target": "esc",  "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c1": {"status": 1, "target": "esc",  "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c2": {"status": 1, "target": "esc",  "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "c3": {"status": 1, "target": "esc",  "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "d1": {"status": 0, "target": "ve_gnd", "index": 1, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "e0": {"status": 0, "target": "vt_gnd", "index": 0, "channel": "uart", "distance": 0, "protocol": "v1",
+                      "uart": {"interface": "/dev/ttyACM:v2CA3p1010in02", "baudrate": 8000000, "parity": 0, "stopbit": 0, "wordlen": 8}},
+                "112": {"status": 1, "target": "mvision", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 2}},
+                "113": {"status": 1, "target": "mvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 3}},
+                "115": {"status": 1, "target": "mvision", "index": 5, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 5}},
+                "116": {"status": 1, "target": "mvision", "index": 6, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 6}},
+                "117": {"status": 1, "target": "mvision", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "mvision", "index": 7}},
+                "120": {"status": 1, "target": "bvision", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "121": {"status": 1, "target": "bvision", "index": 1, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "122": {"status": 1, "target": "bvision", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "123": {"status": 1, "target": "bvision", "index": 3, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "124": {"status": 1, "target": "bvision", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 1}},
+                "1d0": {"status": 1, "target": "blackbox", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "blackbox", "index": 0}}
+            }
+        },
+        "configuration": {
+            "modem_slave":{"slave_num": 2,"default":0},
+            "usb_id":{"pigeon_id":"1010", "sparrow_id":"1010"},
+            "reset_pin": {"group": 4, "port": 0, "index": 19},
+            "nvram_files_sparrow_ty": {
+                "cp_nvram":   {"vendor": "/etc/sparrow_firmware/cp_nvram.bin", "original": "/tmp/EMMC/wireless/sdr/cp_nvram.bin",
+                               "backup": "/tmp/EMMC/wireless/sdr/cp_nvram_bak.bin"},
+                "rf_nvram":   {"vendor": "/etc/sparrow_firmware/rf_nvram.bin", "original": "/tmp/EMMC/wireless/sdr/rf_nvram.bin",
+                               "backup": "/tmp/EMMC/wireless/sdr/rf_nvram_bak.bin"},
+                "amt":        {"vendor": "/etc/sparrow_firmware/amt.bin", "original": "/tmp/EMMC/wireless/sdr/amt.bin",
+                               "backup": "/tmp/EMMC/wireless/sdr/amt_bak.bin"},
+                "pwr":        {"vendor": "/etc/sparrow_firmware/pwr.bin", "original": "/tmp/EMMC/wireless/sdr/pwr.bin",
+                               "backup": "/tmp/EMMC/wireless/sdr/pwr_bak.bin"},
+                "rf_setting": {"vendor": "/etc/sparrow_firmware/rf_setting.bin", "original": "/tmp/EMMC/wireless/sdr/rf_setting.bin",
+                               "backup": "/tmp/EMMC/wireless/sdr/rf_setting_bak.bin"}
+            },
+            "sdrs_log": {
+                "channel": {
+                    "modem_da_log": {"status": 0, "channel": "ttyACM", "buf_size": 2097152, "output": ["da_log_store"],
+                        "ttyACM": {"pid": "2CA3", "vid": "1010", "interface_num": 4}
+                    },
+                    "uart_log_in": {"status": 1, "channel": "uart", "buf_size": 2097152, "output": ["dump_store", "uart_log_store"],
+                        "uart": {"interface": "/dev/ttyS1", "baudrate": 1500000, "parity": 0, "stopbit": 0, "wordlen": 8}
+                    },
+                    "da_log_store": {"status": 0, "channel": "blackbox", "buf_size": 2097152, "output": [],
+                        "blackbox": {"base_dir": "/tmp/blackbox/sdrs_log/da_log/", "prefix": "DA_LOG_Whole_S_", "suffix": ".log",
+                                     "file_num_limit": 6, "single_file_size_limit_MB": 5, "total_file_size_limit_MB": 17}
+                    },
+                    "uart_log_store": {"status": 1, "channel": "blackbox", "buf_size": 2097152, "output": [],
+                        "blackbox": {"base_dir": "/tmp/blackbox/sdrs_log/serial_log/", "prefix": "SDRS_SERIAL", "suffix": ".log",
+                                     "file_num_limit": 10, "single_file_size_limit_MB": 1, "total_file_size_limit_MB": 5}
+                    },
+                    "dump_store": {"status": 0, "channel": "dump", "buf_size": 2097152, "output": [],
+                        "dump": {"base_dir": "/tmp/blackbox/sdrs_log/p1_dump_data/", "magic_str": "`~!@#$^&Dump Data: ",
+                                 "file_info_str": "Index: %d, Name: %[^,], Len: %d", "file_info_end_char": "\n"}
+                    }
+                }
+            },
+            "heartbeat": {"t_v1": 500000, "N_v1_max":10, "N_reset_max": 100}
+        }
+    },
+    "cam_usb_service": {
+        "mb_route_table": {
+            "cam_usb_conn": {
+                "host": "camera", "index": 7,
+                "20": {"status": 1, "target": "mobile", "index": 0, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "92": {"status": 1, "target": "vt_air", "index": 2, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 2}},
+                "94": {"status": 1, "target": "vt_air", "index": 4, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "vt_air", "index": 4}},
+                "87": {"status": 1, "target": "ve_air", "index": 7, "channel": "local", "distance": 0, "protocol": "logic",
+                      "local": {"direct_host": "ve_air", "index": 7}}
+            }
+        }
+    }
+}
