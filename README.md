@@ -18,3 +18,4 @@ K300 - Project @ Technion
 1. V01.02.0300_Mavic_Mini_2_dji_system
 2. V01.03.0000_Mavic_Mini_2_dji_system
 
+https://docs.google.com/document/d/14yEqCgKzK6DrhgCtsx-wKX_Gb5EzpgmTwulb9E31gGk/edit?usp=sharing
