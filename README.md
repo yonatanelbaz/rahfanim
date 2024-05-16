@@ -9,7 +9,7 @@ K300 - Project @ Technion
 
 **lz4_decompress** - Some decoded file were found to be compressed lz4 files, these file were uncommpressed and are saves in this folder
 
-**dji_network** - example file that wa extracted from the firmware filesystem to try decompile it using IDA and Ghidra
+**dji_network** - example file that wa extracted from the firmware filesystem and decompile it using IDA and Ghidra
 
 
 
