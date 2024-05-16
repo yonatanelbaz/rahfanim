@@ -1,7 +1,7 @@
 K300 - Project @ Technion
 =========================
 
-the full explanation can be found [here](https://docs.google.com/document/d/14yEqCgKzK6DrhgCtsx-wKX_Gb5EzpgmTwulb9E31gGk/edit?usp=sharing)
+The full explanation can be found [here](https://docs.google.com/document/d/14yEqCgKzK6DrhgCtsx-wKX_Gb5EzpgmTwulb9E31gGk/edit?usp=sharing)
 
 ## Tools
 
