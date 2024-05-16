@@ -12,7 +12,7 @@ K300 - Project @ Technion
 **dji_network** - example file that wa extracted from the firmware filesystem and decompile it using IDA and Ghidra
 
 ## The Filesystems
-###we extracted 2 full filesystems for 2 different firmware versions of the drown:
+### we extracted 2 full filesystems for 2 different firmware versions of the drown:
 1. V01.02.0300_Mavic_Mini_2_dji_system
 2. V01.03.0000_Mavic_Mini_2_dji_system
 
